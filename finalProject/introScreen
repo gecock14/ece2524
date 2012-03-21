@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+import getpass, fileinput, os
+from sys import stdin, stdout, stderr, exit
+
+os.system('clear')
+selectedOption = 'b'
+
+while(1):
+    if selectedOption == 'b':
+        os.system('clear')
+        stdout.write("Welcome to Nunchuk Mashers!\n")
+        stdout.write("To read the instructions, press i\n")
+        stdout.write("To begin the game, press s\n")
+    selectedOption = raw_input()
+
+    if selectedOption == 'i':
+        os.system('clear')
+        try:
+            open("instructions")
+            stdin = file("instructions")
+        except:
+            stderr.write("ERROR: There is no instruction file")
+            exit(1)
+        for line in stdin:
+            stdout.write(line)
+        stdout.write("Press s to begin the game or b to return to the title menue.")
+    
+    if selectedOption == 's':
+        os.system('clear')
+        stdout.write("Which story line would you like to play?\n")
+        stdout.write("Right now the only option is Caveman\n")
+        storyChoice = raw_input()
+        try:
+            open(storyChoice)
+            stdin = file(storyChoice)
+        except:
+            stderr.write("ERROR: No such story available")
+            exit(1)
+        for line in stdin:
+            stdout.write(line)
+        stdout.write("Press any key to exit the game.")
+        wait = raw_input()
+        exit(0)    
